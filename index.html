@@ -1,910 +1,519 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>GHD Stores | Smart Gadgets • Home Decor • Everyday Essentials</title>
-<meta name="description" content="Shop premium smart gadgets, home decor, and everyday essentials at GHD Stores. Discover mini fans, air humidifiers, smart lights, USB gadgets and more." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-<style>
-  :root {
-    --background: hsl(152 30% 7%);
-    --foreground: hsl(152 15% 95%);
-    --card: hsl(152 28% 10%);
-    --card-foreground: hsl(152 15% 95%);
-    --muted: hsl(152 20% 16%);
-    --muted-foreground: hsl(152 10% 65%);
-    --accent: hsl(43 55% 45%);
-    --accent-foreground: hsl(152 44% 10%);
-    --border: hsl(152 20% 18%);
-    --ring: hsl(43 65% 53%);
-    --brand: hsl(43 65% 53%);
-    --brand-foreground: hsl(152 44% 10%);
-    --gold: hsl(43 65% 53%);
-    --gold-300: hsl(43 80% 65%);
-    --gold-400: hsl(43 65% 53%);
-    --gold-500: hsl(43 55% 45%);
-    --gold-600: hsl(43 45% 38%);
-    --red-500: hsl(0 84% 60%);
-    --radius: 0.75rem;
-    --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: var(--font);
-    background: var(--background);
-    color: var(--foreground);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    min-height: 100vh;
-  }
-  a { color: inherit; text-decoration: none; }
-  img { display: block; max-width: 100%; }
-  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
-  ul { list-style: none; }
-  .container-ghd { max-width: 1280px; margin: 0 auto; padding: 0 1rem; }
-  @media (min-width: 1024px) { .container-ghd { padding: 0 2rem; } }
-  .font-display { font-family: var(--font); }
-  .gold-text { color: var(--gold-400); }
-  .text-brand { color: var(--brand); }
-  .text-gold-500 { color: var(--gold-500); }
-  .text-gold-300 { color: var(--gold-300); }
-  .text-muted-foreground { color: var(--muted-foreground); }
-  .text-foreground { color: var(--foreground); }
-  .bg-brand { background: var(--brand); }
-  .text-brand-foreground { color: var(--brand-foreground); }
-  .bg-card { background: var(--card); }
-  .bg-muted { background: var(--muted); }
-  .bg-background { background: var(--background); }
-  .border-border { border-color: var(--border); }
-  .rounded-full { border-radius: 9999px; }
-  .rounded-2xl { border-radius: 1rem; }
-  .rounded-xl { border-radius: 0.75rem; }
-  .rounded-md { border-radius: 0.375rem; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Acme — Contact</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    :root {
+      --fc-bg: #0f172a;
+      --fc-surface: #ffffff;
+      --fc-muted: #64748b;
+      --fc-text: #0f172a;
+      --fc-primary: #2563eb;
+      --fc-primary-dark: #1d4ed8;
+      --fc-border: #e2e8f0;
+      --fc-error: #dc2626;
+      --fc-radius: 12px;
+      --fc-maxw: 1120px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: var(--fc-text); }
 
-  /* Header */
-  header {
-    position: sticky; top: 0; z-index: 50; width: 100%;
-    background: hsl(var(--background) / 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 4rem; }
-  @media (min-width: 1024px) { nav { height: 5rem; } }
-  .brand-link { display: flex; align-items: center; gap: 0.5rem; }
-  .brand-logo {
-    display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center;
-    border-radius: 0.75rem; background: var(--brand); color: var(--brand-foreground);
-  }
-  .brand-logo span { font-weight: 800; font-size: 1.125rem; }
-  .brand-name { display: flex; flex-direction: column; line-height: 1; }
-  .brand-name .t1 { font-weight: 800; font-size: 1.125rem; }
-  .brand-name .t2 { font-size: 10px; font-weight: 500; color: var(--muted-foreground); }
-  @media (max-width: 640px) { .brand-name .t2 { display: none; } }
-  .nav-links { display: none; align-items: center; gap: 0.25rem; }
-  @media (min-width: 1024px) { .nav-links { display: flex; } }
-  .nav-links a {
-    position: relative; padding: 0.5rem 0.75rem; font-size: 0.875rem; font-weight: 500;
-    color: hsl(var(--foreground) / 0.8); transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--brand); }
-  .nav-links a.active { color: var(--brand); }
-  .nav-links a.active::after {
-    content: ''; position: absolute; bottom: 0; left: 0.75rem; right: 0.75rem;
-    height: 2px; border-radius: 9999px; background: var(--gold-400);
-  }
-  .nav-actions { display: flex; align-items: center; gap: 0.25rem; }
-  .icon-btn {
-    display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center;
-    border-radius: 9999px; transition: background 0.2s; position: relative;
-  }
-  .icon-btn:hover { background: var(--muted); }
-  .icon-btn svg { width: 1.25rem; height: 1.25rem; }
-  .cart-badge {
-    position: absolute; top: 2px; right: 2px; min-width: 18px; height: 18px; padding: 0 5px;
-    background: var(--brand); color: var(--brand-foreground); font-size: 11px; font-weight: 700;
-    border-radius: 9999px; display: flex; align-items: center; justify-content: center;
-  }
-  .menu-btn { display: flex; }
-  @media (min-width: 1024px) { .menu-btn { display: none; } }
-  .search-desktop { display: none; flex: 1; max-width: 20rem; }
-  @media (min-width: 1280px) { .search-desktop { display: flex; } }
-  .search-desktop .search-wrap { position: relative; width: 100%; }
-  .search-desktop input {
-    width: 100%; border: 1px solid var(--border); background: var(--muted);
-    border-radius: 9999px; padding: 0.5rem 1rem 0.5rem 2.5rem; font-size: 0.875rem;
-    color: var(--foreground); height: 2.5rem;
-  }
-  .search-desktop input:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
-  .search-desktop .search-icon { position: absolute; left: 0.75rem; top: 50%; transform: translateY(-50%); color: var(--muted-foreground); }
-  .search-desktop .search-icon svg { width: 1rem; height: 1rem; }
+    /* ---------- Footer ---------- */
+    .fc-footer {
+      background: var(--fc-bg);
+      color: #cbd5e1;
+      padding: 64px 24px 32px;
+    }
+    .fc-footer__top {
+      max-width: var(--fc-maxw);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.2fr 2fr;
+      gap: 48px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .fc-footer__logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+    }
+    .fc-footer__tagline {
+      margin: 12px 0 20px;
+      color: #94a3b8;
+      line-height: 1.6;
+      max-width: 320px;
+    }
+    .fc-footer__newsletter {
+      display: flex;
+      gap: 8px;
+      max-width: 360px;
+    }
+    .fc-footer__newsletter-input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.05);
+      color: #fff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .fc-footer__newsletter-input:focus { border-color: var(--fc-primary); }
+    .fc-footer__newsletter-btn {
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      background: var(--fc-primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .fc-footer__newsletter-btn:hover { background: var(--fc-primary-dark); }
 
-  /* Mobile menu */
-  .mobile-menu { display: none; flex-direction: column; padding: 1rem; border-top: 1px solid var(--border); background: var(--card); }
-  .mobile-menu.open { display: flex; }
-  .mobile-menu a { padding: 0.75rem 0.5rem; font-size: 0.95rem; font-weight: 500; border-bottom: 1px solid var(--border); }
-  .mobile-menu a:last-child { border-bottom: none; }
+    .fc-footer__nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .fc-footer__nav-title {
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .fc-footer__nav-list { list-style: none; margin: 0; padding: 0; }
+    .fc-footer__nav-list li { margin-bottom: 10px; }
+    .fc-footer__nav-link {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color .2s;
+    }
+    .fc-footer__nav-link:hover { color: #fff; }
 
-  /* Hero */
-  .hero {
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, hsl(43 65% 53% / 0.08), var(--background) 50%, hsl(43 65% 53% / 0.05));
-  }
-  .hero::before {
-    content: ''; position: absolute; left: -5rem; top: 2.5rem; height: 18rem; width: 18rem;
-    border-radius: 9999px; background: hsl(43 65% 53% / 0.1); filter: blur(64px); pointer-events: none;
-  }
-  .hero::after {
-    content: ''; position: absolute; right: -5rem; bottom: 0; height: 24rem; width: 24rem;
-    border-radius: 9999px; background: hsl(43 65% 53% / 0.1); filter: blur(64px); pointer-events: none;
-  }
-  .hero-grid {
-    position: relative; display: grid; align-items: center; gap: 3rem; padding: 4rem 0;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 1024px) { .hero-grid { grid-template-columns: 1fr 1fr; padding: 6rem 0; } }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.25rem;
-    border: 1px solid hsl(43 65% 53% / 0.3); background: hsl(43 65% 53% / 0.1);
-    border-radius: 9999px; padding: 0.375rem 1rem; font-size: 0.875rem; font-weight: 500;
-    color: var(--gold-300);
-  }
-  .hero-badge svg { width: 1rem; height: 1rem; }
-  .hero h1 {
-    font-size: 2.25rem; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;
-  }
-  @media (min-width: 640px) { .hero h1 { font-size: 3rem; } }
-  @media (min-width: 1024px) { .hero h1 { font-size: 3.75rem; } }
-  .hero p {
-    margin-top: 1.25rem; max-width: 28rem; font-size: 1rem; line-height: 1.7;
-    color: var(--muted-foreground);
-  }
-  @media (min-width: 640px) { .hero p { font-size: 1.125rem; } }
-  .hero-cta { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
-  @media (min-width: 640px) { .hero-cta { flex-direction: row; } }
-  .btn {
-    display: inline-flex; align-items: center; justify-content: center; font-weight: 500;
-    transition: all 0.2s; white-space: nowrap; height: 3rem; border-radius: 9999px; padding: 0 2rem;
-    font-size: 1rem;
-  }
-  .btn svg { width: 1.25rem; height: 1.25rem; }
-  .btn-primary { background: var(--brand); color: var(--brand-foreground); }
-  .btn-primary:hover { background: hsl(43 55% 45%); }
-  .btn-primary svg { margin-left: 0.5rem; }
-  .btn-outline { border: 1px solid var(--border); background: var(--background); color: var(--foreground); }
-  .btn-outline:hover { background: hsl(43 55% 45% / 0.15); color: var(--accent-foreground); }
-  .btn-outline svg { margin-right: 0.5rem; }
-  .hero-stats { margin-top: 2.5rem; display: flex; gap: 2rem; }
-  .hero-stats .stat .n { font-size: 1.5rem; font-weight: 800; color: var(--gold-400); }
-  .hero-stats .stat .l { font-size: 0.75rem; color: var(--muted-foreground); }
-  .hero-img-wrap { position: relative; }
-  .hero-img-wrap img {
-    width: 100%; border-radius: 1.5rem; aspect-ratio: 4/3; object-fit: cover;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  }
-  .hero-float {
-    position: absolute; bottom: 1.5rem; left: 1.5rem; background: hsl(var(--card) / 0.9);
-    backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 1rem;
-    padding: 1rem; display: flex; align-items: center; gap: 0.75rem;
-  }
-  .hero-float .ic {
-    display: flex; height: 2.5rem; width: 2.5rem; align-items: center; justify-content: center;
-    border-radius: 9999px; background: hsl(43 65% 53% / 0.2); color: var(--gold-400);
-  }
-  .hero-float .ic svg { width: 1.25rem; height: 1.25rem; }
-  .hero-float .t1 { font-size: 0.875rem; font-weight: 700; }
-  .hero-float .t2 { font-size: 0.75rem; color: var(--muted-foreground); }
+    .fc-footer__bottom {
+      max-width: var(--fc-maxw);
+      margin: 0 auto;
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .fc-footer__copy { color: #64748b; font-size: 13px; margin: 0; }
+    .fc-footer__social { display: flex; gap: 12px; }
+    .fc-footer__social-link {
+      width: 36px; height: 36px;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background .2s, color .2s, transform .2s;
+    }
+    .fc-footer__social-link:hover {
+      background: var(--fc-primary);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .fc-footer__legal { display: flex; gap: 20px; }
+    .fc-footer__legal a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+    .fc-footer__legal a:hover { color: #fff; }
 
-  /* Section */
-  section { padding: 4rem 0; }
-  @media (min-width: 1024px) { section { padding: 5rem 0; } }
-  .section-head { margin-bottom: 2rem; display: flex; flex-direction: column; gap: 1rem; }
-  @media (min-width: 640px) { .section-head { flex-direction: row; align-items: flex-end; justify-content: space-between; } }
-  .section-eyebrow { font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-500); margin-bottom: 0.5rem; }
-  .section-title { font-size: 1.875rem; font-weight: 800; }
-  @media (min-width: 640px) { .section-title { font-size: 2.25rem; } }
-  .view-all { display: inline-flex; align-items: center; gap: 0.375rem; font-size: 0.875rem; font-weight: 600; color: var(--brand); transition: color 0.2s; }
-  .view-all:hover { color: var(--gold-500); }
-  .view-all svg { width: 1rem; height: 1rem; transition: transform 0.2s; }
-  .view-all:hover svg { transform: translateX(4px); }
+    /* ---------- Contact ---------- */
+    .fc-contact {
+      background: #f8fafc;
+      padding: 80px 24px;
+      color: var(--fc-text);
+    }
+    .fc-contact__inner { max-width: var(--fc-maxw); margin: 0 auto; }
+    .fc-contact__header { text-align: center; margin-bottom: 48px; }
+    .fc-contact__header h1 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin: 0 0 12px;
+    }
+    .fc-contact__header p { color: var(--fc-muted); font-size: 16px; max-width: 520px; margin: 0 auto; line-height: 1.6; }
 
-  /* Categories */
-  .cat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  @media (min-width: 640px) { .cat-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1024px) { .cat-grid { grid-template-columns: repeat(6, 1fr); } }
-  .cat-card {
-    display: flex; flex-direction: column; align-items: center; text-align: center;
-    border: 1px solid var(--border); background: var(--card); border-radius: 1rem;
-    padding: 1rem; transition: all 0.3s;
-  }
-  .cat-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-  .cat-card .img-wrap { position: relative; margin-bottom: 0.75rem; height: 5rem; width: 5rem; overflow: hidden; border-radius: 9999px; background: var(--muted); }
-  .cat-card .img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-  .cat-card:hover .img-wrap img { transform: scale(1.1); }
-  .cat-card h3 { font-size: 0.875rem; font-weight: 600; transition: color 0.2s; }
-  .cat-card:hover h3 { color: var(--brand); }
-  .cat-card p { margin-top: 0.125rem; font-size: 0.75rem; color: var(--muted-foreground); }
+    .fc-contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .fc-contact__aside {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+    .fc-contact__info h3 {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--fc-muted);
+      margin: 0 0 6px;
+      font-weight: 600;
+    }
+    .fc-contact__info a, .fc-contact__info p {
+      color: var(--fc-text);
+      text-decoration: none;
+      font-size: 16px;
+      line-height: 1.5;
+      margin: 0;
+    }
+    .fc-contact__info a:hover { color: var(--fc-primary); }
 
-  /* Product grid */
-  .prod-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-  @media (min-width: 640px) { .prod-grid { grid-template-columns: repeat(3, 1fr); } }
-  @media (min-width: 1024px) { .prod-grid { grid-template-columns: repeat(4, 1fr); } }
-  .prod-card {
-    display: flex; flex-direction: column; overflow: hidden; border: 1px solid var(--border);
-    background: var(--card); border-radius: 1rem; transition: all 0.3s; position: relative;
-  }
-  .prod-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-  .prod-img-link { position: relative; display: block; aspect-ratio: 1; overflow: hidden; background: var(--muted); }
-  .prod-img-link img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-  .prod-card:hover .prod-img-link img { transform: scale(1.1); }
-  .prod-badges { position: absolute; left: 0.75rem; top: 0.75rem; display: flex; flex-direction: column; gap: 0.375rem; }
-  .badge-discount { border-radius: 9999px; background: var(--red-500); padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700; color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-  .badge-flash { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 9999px; background: var(--gold-400); padding: 0.25rem 0.625rem; font-size: 0.75rem; font-weight: 700; color: #000; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-  .badge-flash svg { width: 0.75rem; height: 0.75rem; fill: currentColor; }
-  .wishlist-btn {
-    position: absolute; right: 0.75rem; top: 0.75rem; display: flex; height: 2.25rem; width: 2.25rem;
-    align-items: center; justify-content: center; border-radius: 9999px;
-    background: hsl(0 0% 0% / 0.6); backdrop-filter: blur(4px); transition: all 0.2s;
-  }
-  .wishlist-btn:hover { transform: scale(1.1); }
-  .wishlist-btn svg { width: 1.125rem; height: 1.125rem; }
-  .wishlist-btn.active svg { fill: var(--red-500); stroke: var(--red-500); }
-  .prod-body { display: flex; flex: 1; flex-direction: column; padding: 1rem; }
-  .prod-cat { font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted-foreground); }
-  .prod-cat:hover { color: var(--brand); }
-  .prod-name { margin-top: 0.25rem; font-size: 0.875rem; font-weight: 600; line-height: 1.3; transition: color 0.2s; }
-  .prod-name:hover { color: var(--brand); }
-  .prod-rating { margin-top: 0.5rem; display: flex; align-items: center; gap: 0.375rem; }
-  .stars { display: flex; align-items: center; gap: 1px; }
-  .stars svg { width: 0.875rem; height: 0.875rem; }
-  .stars .filled { fill: var(--gold-400); stroke: var(--gold-400); }
-  .stars .empty { fill: var(--muted); stroke: hsl(var(--muted-foreground) / 0.3); }
-  .prod-rating span { font-size: 0.75rem; color: var(--muted-foreground); }
-  .prod-price { margin-top: 0.75rem; display: flex; align-items: baseline; gap: 0.5rem; }
-  .prod-price .now { font-size: 1.125rem; font-weight: 800; color: var(--brand); }
-  .prod-price .was { font-size: 0.875rem; color: var(--muted-foreground); text-decoration: line-through; }
-  .prod-actions { margin-top: 1rem; display: flex; gap: 0.5rem; }
-  .btn-add, .btn-buy {
-    display: inline-flex; align-items: center; justify-content: center; font-size: 0.875rem;
-    font-weight: 500; height: 2.25rem; border-radius: 0.375rem; flex: 1; transition: all 0.2s;
-  }
-  .btn-add { border: 1px solid var(--border); background: var(--background); }
-  .btn-add:hover { background: hsl(43 55% 45% / 0.15); }
-  .btn-add svg { width: 1rem; height: 1rem; margin-right: 0.25rem; }
-  .btn-buy { background: var(--brand); color: var(--brand-foreground); }
-  .btn-buy:hover { background: hsl(43 55% 45%); }
-  .btn-buy svg { width: 1rem; height: 1rem; margin-right: 0.25rem; }
+    .fc-contact__form {
+      background: var(--fc-surface);
+      border: 1px solid var(--fc-border);
+      border-radius: var(--fc-radius);
+      padding: 32px;
+      box-shadow: 0 1px 3px rgba(15,23,42,0.04), 0 10px 30px rgba(15,23,42,0.06);
+    }
+    .fc-field { margin-bottom: 20px; }
+    .fc-field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .fc-field input, .fc-field textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--fc-border);
+      background: #fff;
+      color: var(--fc-text);
+      font-size: 15px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+      box-sizing: border-box;
+    }
+    .fc-field input:focus, .fc-field textarea:focus {
+      border-color: var(--fc-primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+    .fc-input--error { border-color: var(--fc-error) !important; }
+    .fc-error {
+      display: block;
+      color: var(--fc-error);
+      font-size: 13px;
+      margin-top: 6px;
+    }
+    .fc-contact__submit {
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      border: none;
+      background: var(--fc-primary);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s, transform .1s;
+    }
+    .fc-contact__submit:hover:not(:disabled) { background: var(--fc-primary-dark); }
+    .fc-contact__submit:active:not(:disabled) { transform: translateY(1px); }
+    .fc-contact__submit:disabled { opacity: 0.7; cursor: not-allowed; }
 
-  /* Features */
-  .features-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
-  @media (min-width: 640px) { .features-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1024px) { .features-grid { grid-template-columns: repeat(3, 1fr); } }
-  .feature-card {
-    border: 1px solid hsl(var(--brand-foreground) / 0.1); background: hsl(var(--brand-foreground) / 0.05);
-    border-radius: 1rem; padding: 1.5rem; transition: all 0.3s;
-  }
-  .feature-card:hover { border-color: hsl(43 65% 53% / 0.3); background: hsl(var(--brand-foreground) / 0.1); }
-  .feature-icon {
-    margin-bottom: 1rem; display: flex; height: 3rem; width: 3rem; align-items: center; justify-content: center;
-    border-radius: 0.75rem; background: hsl(43 65% 53% / 0.2); color: var(--gold-400); transition: transform 0.3s;
-  }
-  .feature-card:hover .feature-icon { transform: scale(1.1); }
-  .feature-icon svg { width: 1.5rem; height: 1.5rem; }
-  .feature-card h3 { margin-bottom: 0.5rem; font-size: 1.125rem; font-weight: 600; }
-  .feature-card p { font-size: 0.875rem; line-height: 1.7; color: hsl(var(--brand-foreground) / 0.7); }
-
-  /* Reviews */
-  .reviews-section { text-align: center; }
-  .reviews-empty {
-    max-width: 32rem; margin: 0 auto; padding: 3rem 1.5rem; text-align: center;
-    border: 1px dashed var(--border); border-radius: 1.5rem; background: hsl(var(--brand-foreground) / 0.03);
-  }
-  .reviews-empty .ic {
-    margin: 0 auto 1rem; display: flex; height: 4rem; width: 4rem; align-items: center; justify-content: center;
-    border-radius: 9999px; background: hsl(43 65% 53% / 0.1); color: var(--gold-400);
-  }
-  .reviews-empty .ic svg { width: 2rem; height: 2rem; }
-  .reviews-empty h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
-  .reviews-empty p { color: var(--muted-foreground); font-size: 0.95rem; }
-
-  /* Newsletter */
-  .newsletter {
-    position: relative; overflow: hidden;
-    background: linear-gradient(135deg, hsl(43 65% 53% / 0.1), hsl(152 44% 10% / 0.5));
-    border: 1px solid hsl(43 65% 53% / 0.2); border-radius: 1.5rem; padding: 3rem 1.5rem;
-  }
-  @media (min-width: 1024px) { .newsletter { padding: 4rem 3rem; } }
-  .newsletter::before {
-    content: ''; position: absolute; right: -3rem; top: -3rem; height: 16rem; width: 16rem;
-    border-radius: 9999px; background: hsl(43 65% 53% / 0.1); filter: blur(48px); pointer-events: none;
-  }
-  .newsletter-inner { position: relative; max-width: 36rem; margin: 0 auto; text-align: center; }
-  .newsletter h2 { font-size: 2rem; font-weight: 800; }
-  @media (min-width: 1024px) { .newsletter h2 { font-size: 2.5rem; } }
-  .newsletter p { margin-top: 0.75rem; color: var(--muted-foreground); }
-  .newsletter-form { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; max-width: 28rem; margin-left: auto; margin-right: auto; }
-  @media (min-width: 640px) { .newsletter-form { flex-direction: row; } }
-  .newsletter-form input {
-    flex: 1; height: 3rem; border: 1px solid var(--border); background: var(--background);
-    border-radius: 9999px; padding: 0 1.25rem; font-size: 0.875rem; color: var(--foreground);
-  }
-  .newsletter-form input:focus { outline: 2px solid var(--ring); outline-offset: 2px; }
-  .newsletter-form button {
-    display: inline-flex; align-items: center; justify-content: center; height: 3rem; border-radius: 9999px;
-    background: var(--brand); color: var(--brand-foreground); padding: 0 1.5rem; font-size: 0.875rem; font-weight: 500;
-    transition: background 0.2s;
-  }
-  .newsletter-form button:hover { background: hsl(43 55% 45%); }
-  .newsletter-form button svg { width: 1rem; height: 1rem; margin-right: 0.5rem; }
-  .newsletter-note { margin-top: 1rem; font-size: 0.75rem; color: var(--muted-foreground); }
-
-  /* Footer */
-  footer { border-top: 1px solid var(--border); margin-top: 2rem; }
-  .footer-top { display: grid; gap: 2.5rem; padding: 3.5rem 0; grid-template-columns: 1fr; }
-  @media (min-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
-  @media (min-width: 1024px) { .footer-top { grid-template-columns: 2fr 1fr 1fr 1fr; } }
-  .footer-brand p { margin-top: 1rem; max-width: 24rem; font-size: 0.875rem; line-height: 1.7; color: var(--muted-foreground); }
-  .footer-contact { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
-  .footer-contact a, .footer-contact div { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.875rem; color: var(--muted-foreground); transition: color 0.2s; }
-  .footer-contact a:hover { color: var(--brand); }
-  .footer-contact svg { width: 1rem; height: 1rem; flex-shrink: 0; color: var(--gold-500); margin-top: 0.125rem; }
-  .footer-col h4 { margin-bottom: 1rem; font-size: 0.875rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
-  .footer-col ul { display: flex; flex-direction: column; gap: 0.625rem; }
-  .footer-col a { font-size: 0.875rem; color: var(--muted-foreground); transition: color 0.2s; }
-  .footer-col a:hover { color: var(--brand); }
-  .footer-bottom { border-top: 1px solid var(--border); padding: 1.5rem 0; display: flex; flex-direction: column; align-items: center; justify-content: space-between; gap: 1rem; }
-  @media (min-width: 640px) { .footer-bottom { flex-direction: row; } }
-  .footer-bottom p { font-size: 0.75rem; color: var(--muted-foreground); }
-  .footer-social { display: flex; height: 2.25rem; width: 2.25rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid var(--border); color: var(--muted-foreground); transition: all 0.2s; }
-  .footer-social:hover { border-color: var(--brand); background: var(--brand); color: var(--brand-foreground); }
-  .footer-social svg { width: 1rem; height: 1rem; }
-
-  /* Toast */
-  .toast-wrap { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; display: flex; flex-direction: column; gap: 0.5rem; }
-  .toast {
-    display: flex; align-items: center; gap: 0.75rem; padding: 0.875rem 1.25rem;
-    background: var(--card); border: 1px solid var(--border); border-radius: 0.75rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4); font-size: 0.875rem; animation: toastIn 0.3s ease;
-  }
-  .toast .ic { display: flex; align-items: center; justify-content: center; height: 1.5rem; width: 1.5rem; border-radius: 9999px; background: hsl(152 44% 30%); color: hsl(152 44% 80%); }
-  .toast .ic svg { width: 0.875rem; height: 0.875rem; }
-  @keyframes toastIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-  .reveal { animation: fadeUp 0.5s ease both; }
-
-  /* Cart drawer */
-  .overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 90; }
-  .overlay.open { opacity: 1; pointer-events: auto; }
-  .drawer {
-    position: fixed; top: 0; right: 0; height: 100%; width: min(400px, 100%); background: var(--card);
-    border-left: 1px solid var(--border); transform: translateX(100%); transition: transform 0.3s cubic-bezier(.2,.8,.2,1);
-    z-index: 100; display: flex; flex-direction: column;
-  }
-  .drawer.open { transform: translateX(0); }
-  .drawer-head { padding: 1.25rem; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-  .drawer-head h2 { font-size: 1.125rem; font-weight: 700; }
-  .drawer-close { display: flex; height: 2.25rem; width: 2.25rem; align-items: center; justify-content: center; border-radius: 9999px; border: 1px solid var(--border); transition: background 0.2s; }
-  .drawer-close:hover { background: var(--muted); }
-  .drawer-close svg { width: 1rem; height: 1rem; }
-  .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.25rem; }
-  .cart-item { display: flex; gap: 0.75rem; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
-  .cart-item img { width: 4rem; height: 4rem; border-radius: 0.5rem; object-fit: cover; }
-  .cart-item .info { flex: 1; display: flex; flex-direction: column; gap: 0.25rem; }
-  .cart-item .info h4 { font-size: 0.875rem; font-weight: 600; }
-  .cart-item .info .sub { font-size: 0.75rem; color: var(--muted-foreground); }
-  .qty { display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem; }
-  .qty button { width: 1.75rem; height: 1.75rem; border-radius: 0.5rem; border: 1px solid var(--border); background: var(--muted); font-weight: 700; transition: background 0.2s; }
-  .qty button:hover { background: hsl(152 20% 22%); }
-  .cart-item .right { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; text-align: right; }
-  .cart-item .right .p { font-weight: 700; font-size: 0.875rem; color: var(--brand); }
-  .cart-item .remove { font-size: 0.75rem; color: var(--muted-foreground); transition: color 0.2s; }
-  .cart-item .remove:hover { color: var(--red-500); }
-  .cart-empty { text-align: center; color: var(--muted-foreground); padding: 3rem 1rem; }
-  .cart-empty svg { width: 3rem; height: 3rem; margin: 0 auto 0.75rem; opacity: 0.4; }
-  .drawer-foot { padding: 1.25rem; border-top: 1px solid var(--border); }
-  .cart-row { display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.875rem; }
-  .cart-row.total { font-size: 1.125rem; font-weight: 700; margin-top: 0.5rem; padding-top: 0.75rem; border-top: 1px dashed var(--border); }
-  .checkout-btn { width: 100%; margin-top: 1rem; justify-content: center; height: 3rem; }
-
-  @media (max-width: 640px) { .hero-stats { gap: 1.25rem; } }
-</style>
+    /* ---------- Responsive ---------- */
+    @media (max-width: 860px) {
+      .fc-footer__top { grid-template-columns: 1fr; gap: 32px; }
+      .fc-contact__grid { grid-template-columns: 1fr; gap: 32px; }
+    }
+    @media (max-width: 560px) {
+      .fc-footer__nav { grid-template-columns: 1fr 1fr; gap: 24px; }
+      .fc-footer__bottom { flex-direction: column; align-items: flex-start; }
+      .fc-footer__newsletter { flex-direction: column; }
+      .fc-contact__form { padding: 24px; }
+    }
+  </style>
 </head>
 <body>
+  <div id="root"></div>
 
-<div class="relative flex min-h-screen flex-col">
+  <script type="text/babel">
+    const { useState } = React;
 
-  <!-- Header -->
-  <header>
-    <nav class="container-ghd">
-      <a class="brand-link" href="/">
-        <div class="brand-logo"><span>G</span></div>
-        <div class="brand-name">
-          <span class="t1">GHD Stores</span>
-          <span class="t2">Smart Gadgets • Home Decor</span>
-        </div>
-      </a>
-      <div class="nav-links">
-        <a class="active" href="/">Home</a>
-        <a href="#shop">Shop</a>
-        <a href="#categories">Categories</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="search-desktop">
-        <div class="search-wrap">
-          <span class="search-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg></span>
-          <input type="text" placeholder="Search products..." id="searchInput" />
-        </div>
-      </div>
-      <div class="nav-actions">
-        <button class="icon-btn" aria-label="Search" id="searchBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        </button>
-        <a class="icon-btn" href="#" aria-label="Wishlist" id="wishlistLink">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-        </a>
-        <a class="icon-btn" href="#" aria-label="Account">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </a>
-        <a class="icon-btn" href="#" aria-label="Cart" id="cartBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
-          <span class="cart-badge" id="cartCount" style="display:none">0</span>
-        </a>
-        <button class="icon-btn menu-btn" aria-label="Menu" id="menuBtn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        </button>
-      </div>
-    </nav>
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="/">Home</a>
-      <a href="#shop">Shop</a>
-      <a href="#categories">Categories</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </header>
+    const SOCIAL_LINKS = [
+      { label: "Twitter", href: "https://twitter.com", icon: "𝕏" },
+      { label: "GitHub", href: "https://github.com", icon: "🐙" },
+      { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
+      { label: "Dribbble", href: "https://dribbble.com", icon: "●" },
+    ];
 
-  <main class="flex-1">
+    const NAV_COLUMNS = [
+      {
+        title: "Product",
+        links: [
+          { label: "Features", href: "#features" },
+          { label: "Pricing", href: "#pricing" },
+          { label: "Changelog", href: "#changelog" },
+          { label: "Roadmap", href: "#roadmap" },
+        ],
+      },
+      {
+        title: "Company",
+        links: [
+          { label: "About", href: "#about" },
+          { label: "Blog", href: "#blog" },
+          { label: "Careers", href: "#careers" },
+          { label: "Press", href: "#press" },
+        ],
+      },
+      {
+        title: "Resources",
+        links: [
+          { label: "Docs", href: "#docs" },
+          { label: "Support", href: "#support" },
+          { label: "Community", href: "#community" },
+          { label: "Status", href: "#status" },
+        ],
+      },
+    ];
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container-ghd hero-grid">
-        <div class="reveal">
-          <div class="hero-badge">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
-            Premium Quality, Smart Living
-          </div>
-          <h1>Elevate Your <span class="gold-text">Everyday</span><br/>with Smart Essentials</h1>
-          <p>Discover curated smart gadgets, elegant home decor, and everyday essentials designed to make life smarter, simpler, and more beautiful.</p>
-          <div class="hero-cta">
-            <a href="#shop"><button class="btn btn-primary">Shop Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></button></a>
-            <a href="#categories"><button class="btn btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg> Browse Collection</button></a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat"><div class="n">85+</div><div class="l">Products</div></div>
-            <div class="stat"><div class="n">6</div><div class="l">Categories</div></div>
-            <div class="stat"><div class="n">10k+</div><div class="l">Happy Customers</div></div>
-          </div>
-        </div>
-        <div class="hero-img-wrap reveal" style="animation-delay:0.1s">
-          <img src="https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Premium smart gadgets and home decor" />
-          <div class="hero-float">
-            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-            <div>
-              <div class="t1">Free Shipping</div>
-              <div class="t2">On orders over $50</div>
+    function Footer() {
+      const [email, setEmail] = useState("");
+      const [subscribed, setSubscribed] = useState(false);
+
+      const handleSubscribe = (e) => {
+        e.preventDefault();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+        setSubscribed(true);
+        setEmail("");
+        setTimeout(() => setSubscribed(false), 3000);
+      };
+
+      return (
+        <footer className="fc-footer">
+          <div className="fc-footer__top">
+            <div className="fc-footer__brand">
+              <div className="fc-footer__logo">Acme</div>
+              <p className="fc-footer__tagline">
+                Build faster. Ship smarter. Delight your users.
+              </p>
+              <form className="fc-footer__newsletter" onSubmit={handleSubscribe}>
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  aria-label="Email for newsletter"
+                  className="fc-footer__newsletter-input"
+                />
+                <button type="submit" className="fc-footer__newsletter-btn">
+                  {subscribed ? "Subscribed!" : "Subscribe"}
+                </button>
+              </form>
+            </div>
+
+            <div className="fc-footer__nav">
+              {NAV_COLUMNS.map((col) => (
+                <div key={col.title} className="fc-footer__nav-col">
+                  <h4 className="fc-footer__nav-title">{col.title}</h4>
+                  <ul className="fc-footer__nav-list">
+                    {col.links.map((link) => (
+                      <li key={link.label}>
+                        <a href={link.href} className="fc-footer__nav-link">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Categories -->
-    <section id="categories">
-      <div class="container-ghd">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="section-eyebrow">Connected Living</p>
-            <h2 class="section-title">Shop by Category</h2>
+          <div className="fc-footer__bottom">
+            <p className="fc-footer__copy">
+              © {new Date().getFullYear()} Acme Inc. All rights reserved.
+            </p>
+            <div className="fc-footer__social">
+              {SOCIAL_LINKS.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="fc-footer__social-link"
+                >
+                  <span aria-hidden="true">{s.icon}</span>
+                </a>
+              ))}
+            </div>
+            <div className="fc-footer__legal">
+              <a href="#privacy">Privacy</a>
+              <a href="#terms">Terms</a>
+              <a href="#cookies">Cookies</a>
+            </div>
           </div>
-        </div>
-        <div class="cat-grid" id="catGrid"></div>
-      </div>
-    </section>
-
-    <!-- Flash Deals -->
-    <section id="shop">
-      <div class="container-ghd">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="section-eyebrow">Freshly Curated</p>
-            <h2 class="section-title">Flash Deals</h2>
-          </div>
-          <a class="view-all" href="#">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        </div>
-        <div class="prod-grid" id="flashGrid"></div>
-      </div>
-    </section>
-
-    <!-- Featured Products -->
-    <section>
-      <div class="container-ghd">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="section-eyebrow">Handpicked for You</p>
-            <h2 class="section-title">Featured Products</h2>
-          </div>
-          <a class="view-all" href="#">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        </div>
-        <div class="prod-grid" id="featuredGrid"></div>
-      </div>
-    </section>
-
-    <!-- New Arrivals -->
-    <section>
-      <div class="container-ghd">
-        <div class="section-head">
-          <div class="reveal">
-            <p class="section-eyebrow">Just Landed</p>
-            <h2 class="section-title">New Arrivals</h2>
-          </div>
-          <a class="view-all" href="#">View all <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        </div>
-        <div class="prod-grid" id="newGrid"></div>
-      </div>
-    </section>
-
-    <!-- Features -->
-    <section id="about">
-      <div class="container-ghd">
-        <div class="section-head" style="justify-content:center;text-align:center">
-          <div class="reveal" style="margin:0 auto">
-            <p class="section-eyebrow">Why GHD Stores</p>
-            <h2 class="section-title">The GHD Stores Difference</h2>
-            <p style="margin-top:0.75rem;color:var(--muted-foreground);max-width:36rem">We are committed to delivering an exceptional shopping experience with premium products and outstanding service.</p>
-          </div>
-        </div>
-        <div class="features-grid" id="featuresGrid"></div>
-      </div>
-    </section>
-
-    <!-- Reviews -->
-    <section class="reviews-section">
-      <div class="container-ghd">
-        <div class="section-head" style="justify-content:center;text-align:center">
-          <div class="reveal" style="margin:0 auto">
-            <p class="section-eyebrow">Customer Reviews</p>
-            <h2 class="section-title">What Our Customers Say</h2>
-          </div>
-        </div>
-        <div class="reviews-empty reveal">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg></div>
-          <h3>Reviews Coming Soon</h3>
-          <p>Our customer reviews will appear here as orders start coming in. We are a newly launched store and can't wait to hear what you think!</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Newsletter -->
-    <section>
-      <div class="container-ghd">
-        <div class="newsletter reveal">
-          <div class="newsletter-inner">
-            <h2>Stay in the Loop</h2>
-            <p>Subscribe to our newsletter for new arrivals, product updates, and the latest from GHD Stores.</p>
-            <form class="newsletter-form" id="newsletterForm">
-              <input type="email" placeholder="Enter your email" required />
-              <button type="submit"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></svg> Subscribe</button>
-            </form>
-            <p class="newsletter-note">By subscribing, you agree to our Privacy Policy. Unsubscribe anytime.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer id="contact">
-    <div class="container-ghd">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <a class="brand-link" href="/">
-            <div class="brand-logo"><span>G</span></div>
-            <span style="font-weight:800;font-size:1.125rem">GHD Stores</span>
-          </a>
-          <p>Smart Gadgets • Home Decor • Everyday Essentials. Quality you can trust, delivered to your door.</p>
-          <div class="footer-contact">
-            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg><span>Manimangalam House, Manjummel P.O., Eloor, Kerala, India</span></div>
-            <a href="tel:+919544894106"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+91 95448 94106</a>
-            <div><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Email coming soon</div>
-            <a href="https://www.instagram.com/g_h_d_store" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>@g_h_d_store</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="#shop">All Products</a></li>
-            <li><a href="#shop">Flash Deals</a></li>
-            <li><a href="#shop">New Arrivals</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Categories</h4>
-          <ul>
-            <li><a href="#categories">Mini Fans</a></li>
-            <li><a href="#categories">Air Humidifiers</a></li>
-            <li><a href="#categories">Smart Lights</a></li>
-            <li><a href="#categories">Home Decor</a></li>
-            <li><a href="#categories">USB Gadgets</a></li>
-            <li><a href="#categories">Mobile Accessories</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Help</h4>
-          <ul>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Returns & Refunds</a></li>
-            <li><a href="#">FAQ</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 GHD Stores. All rights reserved.</p>
-        <a href="https://www.instagram.com/g_h_d_store" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
-        </a>
-      </div>
-    </div>
-  </footer>
-
-</div>
-
-<!-- Cart Drawer -->
-<div class="overlay" id="overlay"></div>
-<aside class="drawer" id="drawer" aria-label="Shopping cart">
-  <div class="drawer-head">
-    <h2>Your Cart</h2>
-    <button class="drawer-close" id="closeCart" aria-label="Close cart">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
-    </button>
-  </div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="drawer-foot" id="drawerFoot" style="display:none">
-    <div class="cart-row"><span>Subtotal</span><span id="subtotal">$0.00</span></div>
-    <div class="cart-row"><span>Shipping</span><span id="shipping">Free</span></div>
-    <div class="cart-row total"><span>Total</span><span id="total">$0.00</span></div>
-    <button class="btn btn-primary checkout-btn" id="checkoutBtn">Checkout</button>
-  </div>
-</aside>
-
-<div class="toast-wrap" id="toastWrap"></div>
-
-<script>
-  const CATEGORIES = [
-    { name: "Mini Fans", count: 12, img: "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { name: "Air Humidifiers", count: 9, img: "https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { name: "Smart Lights", count: 15, img: "https://images.pexels.com/photos/1112597/pexels-photo-1112597.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { name: "Home Decor", count: 20, img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { name: "USB Gadgets", count: 11, img: "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { name: "Mobile Accessories", count: 18, img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  ];
-
-  const FLASH_DEALS = [
-    { id: 1, name: "AeroBreeze Portable Mini Fan", cat: "Mini Fans", price: 24.99, old: 39.99, off: 38, img: "https://images.pexels.com/photos/4006083/pexels-photo-4006083.jpeg?auto=compress&cs=tinysrgb&w=800", flash: true },
-    { id: 2, name: "MistCloud Ultrasonic Humidifier", cat: "Air Humidifiers", price: 34.99, old: 54.99, off: 38, img: "https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=800", flash: true },
-    { id: 3, name: "LumenGlow Smart LED Bulb", cat: "Smart Lights", price: 27.99, old: 44.99, off: 38, img: "https://images.pexels.com/photos/1112597/pexels-photo-1112597.jpeg?auto=compress&cs=tinysrgb&w=800", flash: true },
-    { id: 4, name: "PowerPort USB-C Hub 7-in-1", cat: "USB Gadgets", price: 12.99, old: 22.99, off: 43, img: "https://images.pexels.com/photos/459653/pexels-photo-459653.jpeg?auto=compress&cs=tinysrgb&w=800", flash: true },
-    { id: 5, name: "HueStrip Smart LED Light Bar", cat: "Smart Lights", price: 49.99, old: 79.99, off: 38, img: "https://images.pexels.com/photos/1112597/pexels-photo-1112597.jpeg?auto=compress&cs=tinysrgb&w=800", flash: true },
-    { id: 6, name: "DataSync USB-C Cable Braided", cat: "USB Gadgets", price: 19.99, old: 34.99, off: 43, img: "https://images.pexels.com/photos/459653/pexels-photo-459653.jpeg?auto=compress&cs=tinysrgb&w=800", flash: true },
-  ];
-
-  const FEATURED = [
-    { id: 7, name: "AeroBreeze Portable Mini Fan", cat: "Mini Fans", price: 24.99, old: 39.99, off: 38, img: "https://images.pexels.com/photos/4006083/pexels-photo-4006083.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 8, name: "MistCloud Ultrasonic Humidifier", cat: "Air Humidifiers", price: 34.99, old: 54.99, off: 38, img: "https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 9, name: "LumenGlow Smart LED Bulb", cat: "Smart Lights", price: 27.99, old: 44.99, off: 38, img: "https://images.pexels.com/photos/1112597/pexels-photo-1112597.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 10, name: "Artisan Ceramic Vase Set", cat: "Home Decor", price: 39.99, old: 59.99, off: 33, img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 11, name: "PowerPort USB-C Hub 7-in-1", cat: "USB Gadgets", price: 12.99, old: 22.99, off: 43, img: "https://images.pexels.com/photos/459653/pexels-photo-459653.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 12, name: "FlexiCharge Wireless Phone Stand", cat: "Mobile Accessories", price: 29.99, old: 49.99, off: 40, img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 13, name: "BreezeMax Desk Oscillating Fan", cat: "Mini Fans", price: 42.99, old: 69.99, off: 39, img: "https://images.pexels.com/photos/4006083/pexels-photo-4006083.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 14, name: "PureAir Aroma Diffuser Pro", cat: "Air Humidifiers", price: 32.99, old: 52.99, off: 38, img: "https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  ];
-
-  const NEW_ARRIVALS = [
-    { id: 15, name: "AeroBreeze Portable Mini Fan", cat: "Mini Fans", price: 24.99, old: 39.99, off: 38, img: "https://images.pexels.com/photos/4006083/pexels-photo-4006083.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 16, name: "MistCloud Ultrasonic Humidifier", cat: "Air Humidifiers", price: 34.99, old: 54.99, off: 38, img: "https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 17, name: "LumenGlow Smart LED Bulb", cat: "Smart Lights", price: 27.99, old: 44.99, off: 38, img: "https://images.pexels.com/photos/1112597/pexels-photo-1112597.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 18, name: "Artisan Ceramic Vase Set", cat: "Home Decor", price: 39.99, old: 59.99, off: 33, img: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 19, name: "FlexiCharge Wireless Phone Stand", cat: "Mobile Accessories", price: 29.99, old: 49.99, off: 40, img: "https://images.pexels.com/photos/404280/pexels-photo-404280.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 20, name: "PureAir Aroma Diffuser Pro", cat: "Air Humidifiers", price: 32.99, old: 52.99, off: 38, img: "https://images.pexels.com/photos/4202325/pexels-photo-4202325.jpeg?auto=compress&cs=tinysrgb&w=800" },
-    { id: 21, name: "HueStrip Smart LED Light Bar", cat: "Smart Lights", price: 42.99, old: 69.99, off: 38, img: "https://images.pexels.com/photos/1112597/pexels-photo-1112597.jpeg?auto=compress&cs=tinysrgb&w=800" },
-  ];
-
-  const FEATURES = [
-    { title: "Carefully Packaged", desc: "Every order is packed with care to arrive in pristine condition.", icon: '<path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/>' },
-    { title: "Secure Payment", desc: "Bank-grade encryption protects every transaction you make.", icon: '<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>' },
-    { title: "Easy 30-Day Returns", desc: "Not satisfied? Return any item within 30 days for a full refund.", icon: '<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>' },
-    { title: "24/7 Support", desc: "Our dedicated team is always here to help with any questions.", icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>' },
-    { title: "Premium Quality", desc: "Every product is hand-selected and quality-tested by our team.", icon: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>' },
-    { title: "Eco-Friendly", desc: "Sustainable packaging and responsibly sourced products.", icon: '<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>' },
-  ];
-
-  let cart = [];
-  let wishlist = new Set();
-  const $ = (id) => document.getElementById(id);
-  const fmt = (n) => "$" + n.toFixed(2);
-
-  function starRow() {
-    let s = '<div class="stars">';
-    for (let i = 0; i < 5; i++) s += '<svg class="empty" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>';
-    s += '</div><span>No reviews yet</span>';
-    return s;
-  }
-
-  function productCard(p, i) {
-    return `
-      <div class="prod-card reveal" style="animation-delay:${i * 50}ms">
-        <a class="prod-img-link" href="#">
-          <img src="${p.img}" alt="${p.name}" loading="lazy" />
-          <div class="prod-badges">
-            <span class="badge-discount">-${p.off}%</span>
-            ${p.flash ? '<span class="badge-flash"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>Flash</span>' : ''}
-          </div>
-          <button class="wishlist-btn ${wishlist.has(p.id) ? 'active' : ''}" data-wish="${p.id}" aria-label="Toggle wishlist">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
-          </button>
-        </a>
-        <div class="prod-body">
-          <a class="prod-cat" href="#">${p.cat}</a>
-          <a class="prod-name" href="#">${p.name}</a>
-          <div class="prod-rating">${starRow()}</div>
-          <div class="prod-price">
-            <span class="now">${fmt(p.price)}</span>
-            <span class="was">${fmt(p.old)}</span>
-          </div>
-          <div class="prod-actions">
-            <button class="btn-add" data-add="${p.id}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>Add
-            </button>
-            <button class="btn-buy" data-buy="${p.id}">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>Buy Now
-            </button>
-          </div>
-        </div>
-      </div>`;
-  }
-
-  function renderCategories() {
-    $("catGrid").innerHTML = CATEGORIES.map((c, i) => `
-      <a class="cat-card reveal" href="#" style="animation-delay:${i * 50}ms">
-        <div class="img-wrap"><img src="${c.img}" alt="${c.name}" loading="lazy" /></div>
-        <h3>${c.name}</h3>
-        <p>${c.count} items</p>
-      </a>`).join("");
-  }
-
-  function renderProducts() {
-    $("flashGrid").innerHTML = FLASH_DEALS.map((p, i) => productCard(p, i)).join("");
-    $("featuredGrid").innerHTML = FEATURED.map((p, i) => productCard(p, i)).join("");
-    $("newGrid").innerHTML = NEW_ARRIVALS.map((p, i) => productCard(p, i)).join("");
-    bindProductEvents();
-  }
-
-  function renderFeatures() {
-    $("featuresGrid").innerHTML = FEATURES.map((f, i) => `
-      <div class="feature-card reveal" style="animation-delay:${i * 50}ms">
-        <div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${f.icon}</svg></div>
-        <h3>${f.title}</h3>
-        <p>${f.desc}</p>
-      </div>`).join("");
-  }
-
-  function bindProductEvents() {
-    document.querySelectorAll("[data-add]").forEach(b => b.addEventListener("click", () => addToCart(Number(b.dataset.add))));
-    document.querySelectorAll("[data-buy]").forEach(b => b.addEventListener("click", () => { addToCart(Number(b.dataset.buy)); openCart(); }));
-    document.querySelectorAll("[data-wish]").forEach(b => b.addEventListener("click", (e) => {
-      e.preventDefault(); e.stopPropagation();
-      const id = Number(b.dataset.wish);
-      if (wishlist.has(id)) { wishlist.delete(id); b.classList.remove("active"); toast("Removed from wishlist"); }
-      else { wishlist.add(id); b.classList.add("active"); toast("Added to wishlist"); }
-    }));
-  }
-
-  function findProduct(id) {
-    return [...FLASH_DEALS, ...FEATURED, ...NEW_ARRIVALS].find(p => p.id === id);
-  }
-
-  function addToCart(id) {
-    const p = findProduct(id);
-    if (!p) return;
-    const ex = cart.find(i => i.id === id);
-    if (ex) ex.qty++;
-    else cart.push({ id: p.id, name: p.name, price: p.price, img: p.img, qty: 1 });
-    renderCart();
-    toast(`Added ${p.name}`);
-  }
-
-  function changeQty(id, d) {
-    const it = cart.find(i => i.id === id);
-    if (!it) return;
-    it.qty += d;
-    if (it.qty <= 0) cart = cart.filter(i => i.id !== id);
-    renderCart();
-  }
-
-  function removeItem(id) { cart = cart.filter(i => i.id !== id); renderCart(); }
-
-  function renderCart() {
-    const count = cart.reduce((s, i) => s + i.qty, 0);
-    const cc = $("cartCount");
-    cc.textContent = count;
-    cc.style.display = count > 0 ? "flex" : "none";
-    if (cart.length === 0) {
-      $("cartItems").innerHTML = `<div class="cart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg><p>Your cart is empty</p></div>`;
-      $("drawerFoot").style.display = "none";
-      return;
+        </footer>
+      );
     }
-    $("cartItems").innerHTML = cart.map(i => `
-      <div class="cart-item">
-        <img src="${i.img}" alt="${i.name}" />
-        <div class="info">
-          <h4>${i.name}</h4>
-          <span class="sub">${fmt(i.price)} each</span>
-          <div class="qty">
-            <button data-dec="${i.id}">−</button>
-            <span>${i.qty}</span>
-            <button data-inc="${i.id}">+</button>
+
+    function ContactPage() {
+      const [form, setForm] = useState({ name: "", email: "", message: "" });
+      const [status, setStatus] = useState("idle");
+      const [errors, setErrors] = useState({});
+
+      const validate = () => {
+        const next = {};
+        if (!form.name.trim()) next.name = "Name is required";
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
+          next.email = "Valid email is required";
+        if (form.message.trim().length < 10)
+          next.message = "Message must be at least 10 characters";
+        setErrors(next);
+        return Object.keys(next).length === 0;
+      };
+
+      const handleChange = (e) => {
+        const { name, value } = e.target;
+        setForm((f) => ({ ...f, [name]: value }));
+        if (errors[name]) setErrors((er) => ({ ...er, [name]: undefined }));
+      };
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (!validate()) return;
+        setStatus("sending");
+        try {
+          await new Promise((res) => setTimeout(res, 800));
+          setStatus("sent");
+          setForm({ name: "", email: "", message: "" });
+          setTimeout(() => setStatus("idle"), 4000);
+        } catch (err) {
+          setStatus("error");
+          setTimeout(() => setStatus("idle"), 4000);
+        }
+      };
+
+      return (
+        <section className="fc-contact">
+          <div className="fc-contact__inner">
+            <header className="fc-contact__header">
+              <h1>Get in touch</h1>
+              <p>
+                Questions, feedback, or just want to say hi? We usually reply
+                within one business day.
+              </p>
+            </header>
+
+            <div className="fc-contact__grid">
+              <aside className="fc-contact__aside">
+                <div className="fc-contact__info">
+                  <h3>Email</h3>
+                  <a href="mailto:hello@acme.com">hello@acme.com</a>
+                </div>
+                <div className="fc-contact__info">
+                  <h3>Phone</h3>
+                  <a href="tel:+18005551234">+1 (800) 555-1234</a>
+                </div>
+                <div className="fc-contact__info">
+                  <h3>Office</h3>
+                  <p>123 Market Street, Suite 400<br />San Francisco, CA 94103</p>
+                </div>
+                <div className="fc-contact__info">
+                  <h3>Hours</h3>
+                  <p>Mon–Fri, 9am–6pm PT</p>
+                </div>
+              </aside>
+
+              <form className="fc-contact__form" onSubmit={handleSubmit} noValidate>
+                <div className="fc-field">
+                  <label htmlFor="name">Name</label>
+                  <input
+                    id="name"
+                    name="name"
+                    type="text"
+                    value={form.name}
+                    onChange={handleChange}
+                    className={errors.name ? "fc-input--error" : ""}
+                    placeholder="Jane Doe"
+                  />
+                  {errors.name && <span className="fc-error">{errors.name}</span>}
+                </div>
+
+                <div className="fc-field">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className={errors.email ? "fc-input--error" : ""}
+                    placeholder="jane@example.com"
+                  />
+                  {errors.email && <span className="fc-error">{errors.email}</span>}
+                </div>
+
+                <div className="fc-field">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    value={form.message}
+                    onChange={handleChange}
+                    className={errors.message ? "fc-input--error" : ""}
+                    placeholder="Tell us how we can help…"
+                  />
+                  {errors.message && (
+                    <span className="fc-error">{errors.message}</span>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  className="fc-contact__submit"
+                  disabled={status === "sending"}
+                >
+                  {status === "sending" && "Sending…"}
+                  {status === "sent" && "Message sent!"}
+                  {status === "error" && "Try again"}
+                  {status === "idle" && "Send message"}
+                </button>
+              </form>
+            </div>
           </div>
-        </div>
-        <div class="right">
-          <button class="remove" data-rm="${i.id}">Remove</button>
-          <span class="p">${fmt(i.price * i.qty)}</span>
-        </div>
-      </div>`).join("");
-    $("cartItems").querySelectorAll("button").forEach(b => {
-      b.addEventListener("click", () => {
-        const id = Number(b.dataset.inc || b.dataset.dec || b.dataset.rm);
-        if (b.dataset.inc) changeQty(id, 1);
-        if (b.dataset.dec) changeQty(id, -1);
-        if (b.dataset.rm) removeItem(id);
-      });
-    });
-    const sub = cart.reduce((s, i) => s + i.price * i.qty, 0);
-    $("subtotal").textContent = fmt(sub);
-    $("total").textContent = fmt(sub);
-    $("drawerFoot").style.display = "block";
-  }
+        </section>
+      );
+    }
 
-  function toast(msg) {
-    const t = document.createElement("div");
-    t.className = "toast";
-    t.innerHTML = `<span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span> ${msg}`;
-    $("toastWrap").appendChild(t);
-    setTimeout(() => { t.style.opacity = "0"; t.style.transition = "opacity .3s"; }, 2000);
-    setTimeout(() => t.remove(), 2400);
-  }
+    function App() {
+      return (
+        <>
+          <ContactPage />
+          <Footer />
+        </>
+      );
+    }
 
-  function openCart() { $("drawer").classList.add("open"); $("overlay").classList.add("open"); }
-  function closeCart() { $("drawer").classList.remove("open"); $("overlay").classList.remove("open"); }
-
-  $("cartBtn").addEventListener("click", (e) => { e.preventDefault(); openCart(); });
-  $("closeCart").addEventListener("click", closeCart);
-  $("overlay").addEventListener("click", closeCart);
-  $("menuBtn").addEventListener("click", () => $("mobileMenu").classList.toggle("open"));
-  $("checkoutBtn").addEventListener("click", () => { toast("Checkout is a demo in this static page"); });
-  $("newsletterForm").addEventListener("submit", (e) => { e.preventDefault(); e.target.reset(); toast("Subscribed successfully!"); });
-  $("searchBtn").addEventListener("click", () => toast("Search is a demo in this static page"));
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeCart(); });
-
-  renderCategories();
-  renderProducts();
-  renderFeatures();
-  renderCart();
-</script>
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
 </body>
 </html>
